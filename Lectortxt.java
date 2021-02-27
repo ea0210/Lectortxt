@@ -1,4 +1,4 @@
-//inicia
+//inicia el programa lector 
 import java.io.*;
 import java.io.*;
 import java.util.*;

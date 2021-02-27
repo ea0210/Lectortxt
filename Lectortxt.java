@@ -145,10 +145,10 @@ public class Lectortxt extends javax.swing.JFrame {
                     AUX.add(numero);
                 }
             } catch (IOException ex) {
-                Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Lectortxt.class.getName()).log(Level.SEVERE, null, ex);
             }
             } catch (FileNotFoundException ex) {
-            Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Lectortxt.class.getName()).log(Level.SEVERE, null, ex);
             }//Guardar info en ArrayList
         
             //Ordenar de Menor a Mayor
@@ -185,10 +185,10 @@ public class Lectortxt extends javax.swing.JFrame {
                     AUX.add(numero);
                 }
             } catch (IOException ex) {
-                Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Lectortxt.class.getName()).log(Level.SEVERE, null, ex);
             }
             } catch (FileNotFoundException ex) {
-            Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Lectortxt.class.getName()).log(Level.SEVERE, null, ex);
             }//Guardar info en ArrayList
         
             //Ordenar de Mayor a Menor
@@ -220,7 +220,7 @@ JFileChooser File = new JFileChooser();
     try {
         fw = new FileWriter(f);
     } catch (IOException ex) {
-        Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(Lectortxt.class.getName()).log(Level.SEVERE, null, ex);
     }
     try (BufferedWriter escritura = new BufferedWriter(fw)) {
         for(int i=0;i<AUX.size();i++){
@@ -229,7 +229,7 @@ JFileChooser File = new JFileChooser();
             
         }
     } catch (IOException ex) {
-        Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(Lectortxt.class.getName()).log(Level.SEVERE, null, ex);
     }
             JOptionPane.showMessageDialog(null, "Archivo importado con éxito",
                     "Confirmación",
@@ -239,4 +239,55 @@ JFileChooser File = new JFileChooser();
  
     }                                        
 // fin boton exportar
+// inicio boton hipervinculo
+private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
 
+    try {
+                Runtime.getRuntime().exec("C:\\Windows\\System32\\cmd.exe /K start https://drive.google.com/file/d/17Dh8EsC5J-XeD6amTBardvrxpPgTKIYO/view?usp=sharing");
+            } catch (IOException ex) {
+                Logger.getLogger(hipervinculo.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }                                        
+    //  fin boton hipervinculo
+        //Inicio botón Open File
+        private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {                                           
+            JFileChooser File = new JFileChooser();
+            File.setFileFilter(extension);
+            int aprobado = File.showOpenDialog(this);
+            if(aprobado==JFileChooser.APPROVE_OPTION){
+                //Obtener la ruta
+                String ruta=File.getSelectedFile().toString();
+                this.ruta=ruta;
+                JOptionPane.showMessageDialog(null, "Archivo importado con éxito",
+                        "Confirmación",
+                        JOptionPane.INFORMATION_MESSAGE);
+            }//Fin if
+        }//Fin boton Open File
+        public static void main(String args[]) {
+      
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                public void run() {
+                    new NewJFrame().setVisible(true);
+                }      
+            });
+        }
+    
+        // Variables declaration - do not modify                     
+        private javax.swing.JButton jButton1;
+        private javax.swing.JButton jButton2;
+        private javax.swing.JLabel jLabel1;
+        private javax.swing.JMenu jMenu1;
+        private javax.swing.JMenu jMenu2;
+        private javax.swing.JMenuBar jMenuBar1;
+        private javax.swing.JMenuItem jMenuItem1;
+        private javax.swing.JMenuItem jMenuItem2;
+        private javax.swing.JMenuItem jMenuItem3;
+        private javax.swing.JMenuItem jMenuItem5;
+        // End of variables declaration                   
+    
+        private static class hipervinculo {
+    
+            public hipervinculo() {
+            }
+        }
+    }

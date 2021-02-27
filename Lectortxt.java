@@ -120,4 +120,60 @@ public class Lectortxt extends javax.swing.JFrame {
         );
 
         pack();
+        }// </editor-fold>                        
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        System.exit(0);
+       
+    }                                          
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        try {
+            //Leer Archivo
+            FileReader leerArchivo;
+            leerArchivo = new FileReader(ruta);
+            BufferedReader textoArchivo = new BufferedReader(leerArchivo);
+            //Fin Leer Archivo
+            
+            //Guardar info en ArrayList
+            String linea;
+            
+            try {
+                while ((linea=textoArchivo.readLine())!=null) {
+                    int numero;
+                    numero = Integer.parseInt(linea);
+                    AUX.add(numero);
+                }
+            } catch (IOException ex) {
+                Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            } catch (FileNotFoundException ex) {
+            Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }//Guardar info en ArrayList
         
+            //Ordenar de Menor a Mayor
+            for(int i = 0; i < AUX.size(); i++){
+                for(int j=0; j < AUX.size(); j++){
+                    if(AUX.get(i)<AUX.get(j)){
+                    int menor=AUX.get(i);
+                    int mayor=AUX.get(j);
+                    AUX.set(j, menor);
+                    AUX.set(i, mayor);
+                    }//Fin if
+                }//Fin for 2
+            }//Ordenar de Menor a Mayor
+            JOptionPane.showMessageDialog(null, "Datos ordenados exitosamente",
+                    "Confirmación",
+                    JOptionPane.INFORMATION_MESSAGE);
+    }                                          
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        try {
+            //Leer Archivo
+            FileReader leerArchivo;
+            leerArchivo = new FileReader(ruta);
+            BufferedReader textoArchivo = new BufferedReader(leerArchivo);
+            //Fin Leer Archivo
+            
+            //Guardar info en ArrayList
+            String linea;

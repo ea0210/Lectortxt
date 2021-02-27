@@ -267,7 +267,7 @@ private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
       
             java.awt.EventQueue.invokeLater(new Runnable() {
                 public void run() {
-                    new NewJFrame().setVisible(true);
+                    new Lectortxt().setVisible(true);
                 }      
             });
         }

@@ -231,7 +231,7 @@ JFileChooser File = new JFileChooser();
     } catch (IOException ex) {
         Logger.getLogger(Lectortxt.class.getName()).log(Level.SEVERE, null, ex);
     }
-            JOptionPane.showMessageDialog(null, "Archivo importado con éxito",
+            JOptionPane.showMessageDialog(null, "Archivo exportado con éxito",
                     "Confirmación",
                     JOptionPane.INFORMATION_MESSAGE);
         }   

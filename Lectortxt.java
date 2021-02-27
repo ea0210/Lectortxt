@@ -177,3 +177,66 @@ public class Lectortxt extends javax.swing.JFrame {
             
             //Guardar info en ArrayList
             String linea;
+
+            try {
+                while ((linea=textoArchivo.readLine())!=null) {
+                    int numero;
+                    numero = Integer.parseInt(linea);
+                    AUX.add(numero);
+                }
+            } catch (IOException ex) {
+                Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            } catch (FileNotFoundException ex) {
+            Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }//Guardar info en ArrayList
+        
+            //Ordenar de Mayor a Menor
+            for(int i = 0; i < AUX.size(); i++){
+                for(int j=0; j < AUX.size(); j++){
+                    if(AUX.get(i)>AUX.get(j)){
+                    int menor=AUX.get(i);
+                    int mayor=AUX.get(j);
+                    AUX.set(j, menor);
+                    AUX.set(i, mayor); 
+                    }//Fin if
+                }//Fin for 2
+            }//Ordenar de Mayor a Menor
+            JOptionPane.showMessageDialog(null, "Datos ordenados exitosamente",
+                    "Confirmación",
+                    JOptionPane.INFORMATION_MESSAGE);
+    }                                          
+  // boton exportar
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+JFileChooser File = new JFileChooser();
+        File.setFileFilter(extension);
+        int aprobado = File.showOpenDialog(this);
+        if(aprobado==JFileChooser.APPROVE_OPTION){
+            //Obtener la ruta
+            String ruta=File.getSelectedFile().toString();
+            this.ruta=ruta;
+            File f = new File(ruta);
+            FileWriter fw = null;
+    try {
+        fw = new FileWriter(f);
+    } catch (IOException ex) {
+        Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    try (BufferedWriter escritura = new BufferedWriter(fw)) {
+        for(int i=0;i<AUX.size();i++){
+            escritura.write(Integer.toString(AUX.get(i)));
+            escritura.newLine();
+            
+        }
+    } catch (IOException ex) {
+        Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
+    }
+            JOptionPane.showMessageDialog(null, "Archivo importado con éxito",
+                    "Confirmación",
+                    JOptionPane.INFORMATION_MESSAGE);
+        }   
+ 
+ 
+    }                                        
+// fin boton exportar
+
